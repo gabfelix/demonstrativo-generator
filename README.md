@@ -1,15 +1,27 @@
 # demonstrativo-generator
 
-Made with ❤️ and [Spectacle](https://github.com/FormidableLabs/spectacle/).
+Projeto interno da COFE para geração automática de demonstrativos financeiros usando a biblioteca [Spectacle](https://github.com/FormidableLabs/spectacle/).
 
-## Running your presentation
+## Rodando o projeto
 
-- Run `yarn install` (or `npm install` or `pnpm install`) to install dependencies.
-- Run `yarn start` (or `npm start` or `pnpm start`) to start the presentation.
-- Edit `index.tsx to add your presentation content.
+Instale as dependências:
 
-## Building you presentation
+```sh
+yarn install
+```
 
-To build your presentation for a production deploy, run `yarn build` (or `npm build` or `pnpm build`).
+Execute a apresentação:
 
-The build artifacts will be placed in the `dist` directory. If you'd like to change this location, edit `build.outDir` in `vite.config.ts`.
+```sh
+yarn start
+```
+
+## Build da apresentação
+
+Esse recurso da bilbioteca provavelmente não será muito usado, mas é possível fazer uma build da apresentação para compartilhar com alguém sem necessitar das ferramentas de build:
+
+```sh
+yarn build
+```
+
+Os arquivos serão colocados na pasta `dist`.
