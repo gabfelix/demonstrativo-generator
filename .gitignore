@@ -15,3 +15,6 @@ lerna-debug.log*
 
 # Build artifacts
 dist
+
+# Input files
+/*.csv

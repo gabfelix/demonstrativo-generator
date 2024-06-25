@@ -2,13 +2,18 @@
   "name": "demonstrativo-generator",
   "private": true,
   "scripts": {
+    "prestart": "ts-node processCSVData.ts",
     "start": "vite dev --port 3000",
+    "prebuild": "ts-node processCSVData.ts",
     "build": "vite build"
   },
   "dependencies": {
+    "@types/papaparse": "^5.3.14",
+    "papaparse": "^5.4.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "spectacle": "^10.1.7"
+    "spectacle": "^10.1.7",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
