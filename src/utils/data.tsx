@@ -72,6 +72,10 @@ export class Month {
     );
   }
 
+  getBalance(): number {
+    return this.getTotalIncomes() + this.getTotalExpenses();
+  }
+
   //#region Private methods
   private parseRawTransaction(
     transaction: RawTransactionData

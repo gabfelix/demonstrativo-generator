@@ -16,6 +16,7 @@ import currentMonthData from "./dist/current-month.json";
 import lastMonthData from "./dist/last-month.json";
 
 const Presentation = () => {
+  const lastMonth = new Month(currentMonthData.data);
   const currentMonth = new Month(currentMonthData.data);
 
   console.log(currentMonth.transactions);
@@ -25,17 +26,28 @@ const Presentation = () => {
         <FlexBox height="100%">
           <Heading>demonstrativo-generator</Heading>
         </FlexBox>
+        <FlexBox height="100%">
+          <Heading fontSize="h2">Feito com</Heading>
+          <SpectacleLogo size={150} />
+        </FlexBox>
       </Slide>
       <Slide>
-        <FlexBox height="100%">
-          <Heading fontSize="h2">Made with</Heading>
-          <SpectacleLogo size={300} />
-        </FlexBox>
+        <Heading>Último mês</Heading>
+        <Text>Receitas: {formatMoney(lastMonth.getTotalIncomes())}</Text>
+        <Text>Gastos: {formatMoney(lastMonth.getTotalExpenses())}</Text>
+        <Text>Saldo: {formatMoney(lastMonth.getBalance())}</Text>
+        <Text>
+          Maior despesa: {formatMoney(lastMonth.getLargestExpense().value)} (
+          {lastMonth.getLargestExpense().name})
+        </Text>
+        <Text>
+          Maior receita: {formatMoney(lastMonth.getLargestIncome().value)} (
+          {lastMonth.getLargestIncome().name})
+        </Text>
       </Slide>
       <Slide>
         <FlexBox height="100%">
           <Text>{formatMoney(currentMonth.getTotalExpenses())}</Text>
-          <Text>{formatMoney(currentMonth.getLargestExpense().value)}</Text>
           <Text>{formatMoney(currentMonth.getLargestIncome().value)}</Text>
         </FlexBox>
       </Slide>

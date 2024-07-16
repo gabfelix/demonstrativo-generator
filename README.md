@@ -6,6 +6,7 @@ Projeto interno da COFE para geração automática de demonstrativos financeiros
 
 - Agrupar valor de transações com mesma identificação
 - Classificação de gastos (ver [classificador da COIN](https://github.com/Nikomania/Counter-Redbull-Brownie))
+- Aliasing de identificações (exemplo: Empresa Junior De Pesquisas Em Direito -> Advocatta)
 
 ## Rodando o projeto
 
