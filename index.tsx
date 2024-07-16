@@ -11,10 +11,14 @@ import {
 } from "spectacle";
 import * as fs from "fs";
 import * as Papa from "papaparse";
+import { formatMoney, Month } from "./src/utils/data";
+import currentMonthData from "./dist/current-month.json";
 import lastMonthData from "./dist/last-month.json";
 
 const Presentation = () => {
-  console.log(lastMonthData);
+  const currentMonth = new Month(currentMonthData.data);
+
+  console.log(currentMonth.transactions);
   return (
     <Deck template={() => <DefaultTemplate />}>
       <Slide>
@@ -30,8 +34,7 @@ const Presentation = () => {
       </Slide>
       <Slide>
         <FlexBox height="100%">
-          <Text>{lastMonthData.data[1].Identificação}</Text>
-          <Text>{lastMonthData.data[1].Valor}</Text>
+          <Text>{formatMoney(currentMonth.totalExpenses())}</Text>
         </FlexBox>
       </Slide>
     </Deck>
