@@ -34,7 +34,9 @@ const Presentation = () => {
       </Slide>
       <Slide>
         <FlexBox height="100%">
-          <Text>{formatMoney(currentMonth.totalExpenses())}</Text>
+          <Text>{formatMoney(currentMonth.getTotalExpenses())}</Text>
+          <Text>{formatMoney(currentMonth.getLargestExpense().value)}</Text>
+          <Text>{formatMoney(currentMonth.getLargestIncome().value)}</Text>
         </FlexBox>
       </Slide>
     </Deck>

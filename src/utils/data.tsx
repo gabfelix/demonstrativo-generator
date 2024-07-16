@@ -30,12 +30,46 @@ export class Month {
     );
   }
 
-  totalExpenses(): number {
-    return this.transactions
-      .filter((item: StatementTransaction) => item.value > 0)
-      .reduce((acc: number, item: StatementTransaction) => {
+  getExpenses(): Array<StatementTransaction> {
+    return this.transactions.filter(
+      (item: StatementTransaction) => item.value < 0
+    );
+  }
+
+  getLargestExpense(): StatementTransaction {
+    return this.getExpenses().reduce((acc, item) => {
+      return acc.value < item.value ? acc : item;
+    });
+  }
+
+  getTotalExpenses(): number {
+    return this.getExpenses().reduce(
+      (acc: number, item: StatementTransaction) => {
         return acc + item.value;
-      }, 0.0);
+      },
+      0.0
+    );
+  }
+
+  getIncomes(): Array<StatementTransaction> {
+    return this.transactions.filter(
+      (item: StatementTransaction) => item.value >= 0
+    );
+  }
+
+  getLargestIncome(): StatementTransaction {
+    return this.getIncomes().reduce((acc, item) => {
+      return acc.value > item.value ? acc : item;
+    });
+  }
+
+  getTotalIncomes(): number {
+    return this.getIncomes().reduce(
+      (acc: number, item: StatementTransaction) => {
+        return acc + item.value;
+      },
+      0.0
+    );
   }
 
   //#region Private methods

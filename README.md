@@ -2,6 +2,11 @@
 
 Projeto interno da COFE para geração automática de demonstrativos financeiros usando a biblioteca [Spectacle](https://github.com/FormidableLabs/spectacle/).
 
+## TODO
+
+- Agrupar valor de transações com mesma identificação
+- Classificação de gastos (ver [classificador da COIN](https://github.com/Nikomania/Counter-Redbull-Brownie))
+
 ## Rodando o projeto
 
 Instale as dependências:
