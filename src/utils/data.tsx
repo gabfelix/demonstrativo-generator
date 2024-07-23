@@ -96,6 +96,10 @@ export class Month {
   }
 }
 
+export function changePercent(current: number, previous: number): number {
+  return ((current - previous) / Math.abs(previous)) * 100;
+}
+
 export function formatMoney(value: number): string {
   return value.toLocaleString("pt-BR", {
     style: "currency",
