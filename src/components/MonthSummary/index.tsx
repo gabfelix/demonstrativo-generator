@@ -1,5 +1,10 @@
 import { JsxElement } from "typescript";
-import { changePercent, formatMoney, Month } from "../../utils/data";
+import {
+  changePercent,
+  formatMoney,
+  Month,
+  truncateString,
+} from "../../utils/data";
 import { Heading, Slide, Text } from "spectacle";
 
 interface MonthSummarySlideProps {
@@ -13,6 +18,7 @@ export function MonthSummarySlide({
   slideTitle,
   previousMonth,
 }: MonthSummarySlideProps): JSX.Element {
+  const ACCOUNT_NAME_MAXLENGTH = 18;
   return (
     <Slide>
       <Heading>{slideTitle}</Heading>
@@ -27,13 +33,10 @@ export function MonthSummarySlide({
       <Text>
         Gastos: {formatMoney(month.getTotalExpenses())}
         {previousMonth &&
-          ` (${(
-            changePercent(
-              month.getTotalExpenses(),
-              previousMonth.getTotalExpenses()
-            ) * -1
-          ) // Expenses are negative because that makes more intuitive sense even if not mathematically sound
-            .toFixed(2)}%)`}
+          ` (${changePercent(
+            month.getTotalExpenses(),
+            previousMonth.getTotalExpenses()
+          ).toFixed(2)}%)`}
       </Text>
       <Text>
         Saldo: {formatMoney(month.getBalance())}
@@ -45,11 +48,12 @@ export function MonthSummarySlide({
       </Text>
       <Text>
         Maior despesa: {formatMoney(month.getLargestExpense().value)} (
-        {month.getLargestExpense().name})
+        {truncateString(month.getLargestExpense().name, ACCOUNT_NAME_MAXLENGTH)}
+        )
       </Text>
       <Text>
         Maior receita: {formatMoney(month.getLargestIncome().value)} (
-        {month.getLargestIncome().name})
+        {truncateString(month.getLargestIncome().name, ACCOUNT_NAME_MAXLENGTH)})
       </Text>
     </Slide>
   );
